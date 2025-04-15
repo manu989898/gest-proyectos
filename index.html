@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Commander Five</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <h1>Commander Five</h1>
+
+  <div id="players">
+    <!-- Contadores de vida -->
+    <div class="player" id="player1">
+      <h2>Jugador 1</h2>
+      <button onclick="changeLife(1, -1)">-</button>
+      <span id="life1">40</span>
+      <button onclick="changeLife(1, 1)">+</button>
+    </div>
+    <div class="player" id="player2">
+      <h2>Jugador 2</h2>
+      <button onclick="changeLife(2, -1)">-</button>
+      <span id="life2">40</span>
+      <button onclick="changeLife(2, 1)">+</button>
+    </div>
+    <div class="player" id="player3">
+      <h2>Jugador 3</h2>
+      <button onclick="changeLife(3, -1)">-</button>
+      <span id="life3">40</span>
+      <button onclick="changeLife(3, 1)">+</button>
+    </div>
+    <div class="player" id="player4">
+      <h2>Jugador 4</h2>
+      <button onclick="changeLife(4, -1)">-</button>
+      <span id="life4">40</span>
+      <button onclick="changeLife(4, 1)">+</button>
+    </div>
+    <div class="player" id="player5">
+      <h2>Jugador 5</h2>
+      <button onclick="changeLife(5, -1)">-</button>
+      <span id="life5">40</span>
+      <button onclick="changeLife(5, 1)">+</button>
+    </div>
+  </div>
+
+  <div id="phases">
+    <h2>Fases del Turno</h2>
+    <button onclick="nextPhase()">Siguiente Fase</button>
+    <p id="phaseDisplay">Fase actual: Inicio</p>
+  </div>
+
+  <div id="cardSearch">
+    <h2>Buscar Carta (Scryfall)</h2>
+    <input type="text" id="cardInput" placeholder="Nombre de la carta"/>
+    <button onclick="searchCard()">Buscar</button>
+    <div id="cardResult"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
