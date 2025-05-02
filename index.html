@@ -59,3 +59,305 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
+
+
+/*  onCrearArt: function () {
+     
+  var me = this;
+
+  var selected = me.vtnDescargosLin.panels.descargosLinGrid.listGrid.getSelection();
+
+  if (typeof (selected) === "undefined" || selected.length === 0) {
+      isf.lib.MsgBox.showAlert(me, this.locale.msg_sel_un_plato, null);
+      return;
+  }
+
+  var articuloData = {
+      centerId: me.app.centcodi,
+      artCode: selected.get("SERVCODI"),
+      artName: selected.get("SERVDESC"),
+      artDescription: selected.get("SERVDESC") || "", // opcional si existe
+  };
+
+var win = Ext.create('Ext.window.Window', {
+      title: this.locale.title_nuevo_articulo || 'Crear Nuevo Artículo',
+      modal: true,
+      width: 500,
+      layout: 'fit',
+      items: [{
+          xtype: 'form',
+          bodyPadding: 10,
+          defaults: {
+              anchor: '100%',
+              labelWidth: 100
+          },
+          items: [
+              {
+                  xtype: 'textfield',
+                  name: 'artName',
+                  fieldLabel: 'Nombre',
+                  value: articuloData.artName,
+                  allowBlank: false
+              },
+              {
+                  xtype: 'textfield',
+                  name: 'centerId',
+                  fieldLabel: 'Centro',
+                  value: articuloData.centerId,
+                  readOnly: true
+              },
+              {
+                  xtype: 'combobox',
+                  fieldLabel: 'Formato',
+                  itemId: 'formato',
+                  name: 'formato',
+                  displayField: 'FOCODESC',
+                  valueField: 'FOCOCODI',  
+                  store: Ext.getStore('cachedFormComps'), 
+                  queryMode: 'local',
+                  forceSelection: true,
+                  editable: false,
+                  allowBlank: false
+              },
+              {
+                  xtype: "combobox",
+                  fieldLabel: "Factor",
+                  itemId: "dptoOrigen",
+                  store: Common.clonarStore(isf.eco.CachedMasters.subalmacenes, function (record) { return record.data.SBALUSER == 1 && record.data.SBALINVERSION != 1 && record.data.SBALSGA == 0; }, null, "MovIntersecciones_subalmacenes_1"),
+                  queryMode: "local",
+                  displayField: "SBALDESCR",
+                  valueField: "SBALCODI"
+              },
+              {
+                  xtype: "combobox",
+                  fieldLabel: "Unidad",
+                  itemId: "dptoDestino",
+                  store: Common.clonarStore(isf.eco.CachedMasters.subalmacenes, function (record) { return record.data.SBALUSER == 1 && record.data.SBALINVERSION != 1 && record.data.SBALSGA == 0; }, null, "MovIntersecciones_subalmacenes_2"),
+                  queryMode: "local",
+                  displayField: "SBALDESCR",
+                  valueField: "SBALCODI"
+              },
+              {
+                  xtype: 'textfield',
+                  name: 'artCode',
+                  fieldLabel: 'Código',
+                  value: articuloData.artCode,
+                  allowBlank: false
+              },
+              
+
+              {
+                  xtype: 'textarea',
+                  name: 'artDescription',
+                  fieldLabel: 'Descripción',
+                  value: articuloData.artDescription,
+                  allowBlank: true
+              }
+          ],
+          buttons: [
+              {
+                  text: 'Guardar',
+                  handler: function () {
+                      var form = this.up('form').getForm();
+                      if (form.isValid()) {
+                          var values = form.getValues();
+                          console.log('Artículo creado:', values);
+                          // Aquí puedes lanzar un Ajax o llamar a tu función de guardado
+                          win.close();
+                      }
+                  }
+              },
+              {
+                  text: 'Cancelar',
+                  handler: function () {
+                      win.close();
+                  }
+              }
+          ]
+      }]
+  });
+
+  win.show();
+},*/
+
+
+case "GuardarFichaArticulo": 
+                    try 
+                    { 
+                        parametros = new[] { "p_articodi;N", "p_artidesc;V2", "p_grupcodi;N", "p_famicodi;N", "p_sbfmcodi;N", "p_formcodi;N", "p_precioreq;N", "p_artiSubasta;N", "p_artipres;V2", "p_artiprod;V2", "p_artitipo;V2", "p_artimarca;V2", "p_articant;V2", "p_artiunid;V2", "p_excleur;N", "p_exclame;N", "p_global;N", "p_artidota;N", "p_userid;N", "p_nuevo;N", "p_unidcodi;N", "p_unidfactor;N", "p_exclcub;N" }; 
+                        constantes = new[] { "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "" }; 
+                        resultado = this.EjecutaSPString(ESQUE + "PCK_SAC_DESCARGOS.GUARDAR_FICHA_ARTICULO", parametros, constantes); ISFJSONParser.SerializaString(resultado, "RESULTADO"); 
+                    } 
+                    catch (Oracle.DataAccess.Client.OracleException ex) 
+                    { 
+                        ISFJSONParser.SerializaString(ex.Message, "ERROR"); 
+                    } 
+                    break;
+
+
+
+                    select * from cpr05.CENTROS where centcodi = 14
+
+                    select * from cpr05.CENTROS c
+inner join cpr05.sac_ambitos sa on sa.zonacodi = c.zonacodi and tpamcodi = 5 --zonas
+where centcodi = 14
+
+GetArtiCodigosLibres
+PROCEDURE GET_ARTICODIS_LIBRES(p_desde IN Number, p_userid IN Number, p_result OUT sys_refcursor) cpr articulos
+PROCEDURE GUARDA_ART_FORM_ELAB
+WSCPRArticulos.asmx.cs
+
+select * from cpr05.sac_articulos where articodi = 800008
+select * from cpr05.ARTICULOSFORMELAB where articodi = 800008
+
+select * from  cpr05.ARTICULOSCENTROS where articodi > 800000
+
+
+
+--ARTICULO PRO 800072	SUB REC TARTA DE QUESO DE MAIZ MORADO
+
+PROCEDURE GUARDAR_FICHA_ARTICULO(
+--------------------------------------PCK_SAC_CPR_ARTICULOS.GUARDAR_FICHA_ARTICULO-------------------------------------
+   --- p_articodi IN Number,
+    p_artidesc IN Varchar2,
+   --- p_grupcodi IN Number,
+   --- p_famicodi IN Number,
+   --- p_sbfmcodi IN Number,
+    p_formcodi IN Number, 
+   --- p_precioreq IN Number, 
+   --- p_artiSubasta IN Number,     
+   --- p_artipres IN Varchar2, 
+   --- p_artiprod IN Varchar2, 
+   --- p_artitipo IN Varchar2, 
+   --- p_artimarca IN Varchar2, 
+   --- p_articant IN Varchar2, 
+   --- p_artiunid IN Varchar2, ---Comprobar si es unidad de cantidad o Unidad de formato
+    
+   --- p_global IN Number,
+   --- p_artidota IN Number,
+    /*p_preciocan IN Number, 
+    p_precioand IN Number, 
+    p_preciopmi IN Number,*/
+    p_userid IN Number,
+    p_unidcodi IN Number DEFAULT NULL,
+    p_unidfactor IN Number DEFAULT NULL,
+    p_centcodi IN Number,
+   
+    p_result OUT VARCHAR2
+    )
+    
+  AS
+    v_articodi Number;
+    v_grupcodi Number:= 7; ---ELABOR PROPIA
+    v_famicodi Number:= 108; ---Varios Elab Propia
+    v_sbfmcodi Number:= 260; ---Varios Elaboración Propia
+    v_precioreq Number:=0;
+    v_artiSubasta Number:=0;
+    v_artipres VARCHAR2(10);
+    v_artiprod VARCHAR2(10);
+    v_artitipo VARCHAR2(10);
+    v_artimarca VARCHAR2(10); ---Null
+    v_articant VARCHAR2(10); ---Null
+    v_global Number:=1;
+    v_artidota Number:=1; 
+    v_artiunid Number;
+    v_comp Number;
+    v_paiscodi Varchar2(3);
+    v_centabrev Varchar2(10);
+    v_tipoAmb Number:=6; --- Tipo ambito centro 
+    v_ambito Varchar2(10) := p_centcodi;
+    v_anfoasignado Number:=1;
+    V_ADOTCODI Number;
+    v_hasta Date;
+    
+  BEGIN
+  --- Obtener el siguiente ARTICODI disponible.
+    SELECT numero
+        INTO v_articodi
+    FROM (
+      SELECT numero         
+      FROM cpr05.NUMEROS N
+      LEFT JOIN cpr05.SAC_ARTICULOS A ON A.ARTICODI = N.NUMERO
+      WHERE A.ARTICODI IS NULL
+        AND N.NUMERO >= 800000
+      ORDER BY N.NUMERO
+    )
+    WHERE ROWNUM = 1;
+    
+  --- Comprobación de que l nombre de artículo no exsiste.
+    SELECT COUNT(0)
+    INTO v_comp
+    FROM cpr05.SAC_ARTICULOS
+    WHERE ARTIDESC = p_artidesc;
+    
+    IF v_comp > 0 THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Nombre de artículo ya en uso');
+  END IF;
+  
+        SELECT CENTABREV, fs.PAISCODI, fs.fechafinacuerdos
+        INTO v_centabrev, v_paiscodi, v_hasta
+        FROM CPR05.CENTROS c
+        INNER JOIN CPR05.FECHAS_SAC FS ON FS.PAISCODI = c.PAISCODI
+        WHERE CENTCODI = p_centcodi;
+
+        --- estacodi = 3 directamente.
+        INSERT INTO cpr05.sac_articulos (articodi, artidesc, grupcodi, famicodi, sbfmcodi, formcodi, precioreq, artipres, artiprod, artitipo, artimarca, articant, artiunid, ARTIEXCLEUR, ARTIEXCLAME, ARTIGLOBAL, ARTIDOTA, UNIDCODI, UNIDFACTOR, USERID, PAISCODI, ESTACODI, ARTIFULTMOD, artisubasta, ARTIEXCLCUB) 
+        VALUES (v_articodi, trim(p_artidesc), v_grupcodi, v_famicodi, v_sbfmcodi, p_formcodi, v_precioreq, v_artipres, trim(p_artidesc), trim(v_artitipo), trim(v_artimarca), trim(v_articant), v_artiunid, 1, 1, v_global, v_artidota, p_unidcodi, p_unidfactor, p_userid, v_paiscodi, 3, SYSDATE, v_artisubasta, 1); 
+        
+        INSERT INTO cpr05.ARTICULOSEVENTOS (ARTICODI, USERID, AREVFECHA, AREVCOMENT, ESTACODIINI, ESTACODIFIN) VALUES
+        (v_articodi, p_userid, SYSDATE, 'Alta Ficha Artículo', null, null);  
+        
+        INSERT INTO cpr05.articulos_reg_mod (
+            ARTICODI, ENVIADO, ARTIDESC, GRUPCODI, FAMICODI, SBFMCODI, FORMCODI, PRECIOREQ, ARTIPRES, ARTIPROD, ARTITIPO, ARTIMARCA, ARTICANT, ARTIUNID, ARTIBAJA, ARTIEXCLEUR, ARTIEXCLAME, ARTIGLOBAL, ARTIDOTA, UNIDCODI, UNIDFACTOR, USERID, FECHA)
+        VALUES
+        (v_articodi, 0, trim(p_artidesc), v_grupcodi, v_famicodi, v_sbfmcodi, p_formcodi, v_precioreq, v_artipres, trim(p_artidesc), trim(v_artitipo), trim(v_artimarca), trim(v_articant), v_artiunid, 0, 1, 1, v_global, v_artidota, p_unidcodi, p_unidfactor, p_userid, SYSDATE);
+
+    
+    MERGE INTO EAD.TRAD_TRADUCCIONES t
+    USING (SELECT v_articodi AS v_articodi, p_artidesc AS v_artidesc FROM DUAL)
+    ON (TABLCODI = 1 AND IDIOCODI = 34 AND TABLPK = v_articodi)
+    WHEN MATCHED THEN
+        UPDATE SET
+            TRADDESC = v_artidesc
+    WHEN NOT MATCHED THEN
+        INSERT (TABLCODI, TABLPK, IDIOCODI, TRADDESC)
+        VALUES (1, v_articodi, 34, v_artidesc);
+    
+        p_result :='1';
+      ------------------------------------------PCK_SAC_CPR_ARTICULOS.GUARDAR_CENTROS_ARTICULO---------------------------------------------------------
+     
+            INSERT INTO cpr05.ARTICULOSCENTROS(ARTICODI, CENTCODI, DESDE, HASTA, USERID, FMOD)
+            VALUES                      (v_articodi, p_centcodi, SYSDATE, v_hasta, p_userid, SYSDATE);
+            
+            INSERT INTO cpr05.ARTICULOSEVENTOS (ARTICODI, USERID, AREVFECHA, AREVCOMENT, ESTACODIINI, ESTACODIFIN) VALUES
+            (v_articodi, p_userid, SYSDATE, 'Alta Centros Artículo ' || v_centabrev || ' - ' || SYSDATE  || ' - ' || v_hasta, null, null);  
+          
+    ------------------------------------------PCK_SAC_CPR_ARTICULOS.GUARDA_ART_FORM_ELAB---------------------------------------------------------
+   
+        UPDATE cpr05.ARTICULOSFORMELAB SET
+            ANFOASIGNADO = 0
+        WHERE ARTICODI = v_articodi
+        AND ANFOASIGNADO = 1;
+
+        INSERT INTO cpr05.ARTICULOSFORMELAB
+        (ARTICODI,ANFOASIGNADO,TPAMCODI,AMBICODI,CENTCODI ,UNIDFACTOR, UNIDCODI, ANFOFECULTMOD,ANFOUSRULTMOD)
+        VALUES (v_articodi,v_anfoasignado,v_tipoAmb, v_ambito, p_centcodi ,p_unidfactor, p_unidcodi, sysdate, p_userId);
+     
+    EXCEPTION
+    WHEN OTHERS THEN
+       p_result := '0:' || SQLERRM;
+    RETURN;
+    
+  END GUARDAR_FICHA_ARTICULO;
+  SELECT * FROM cpr05.ARTICULOSCENTROS WHERE ARTICODI = 800011;
+select * from cpr05.sac_articulos where articodi > 800011;
+select * from cpr05.ARTICULOSFORMELAB where articodi > 800011;
+select * from  cpr05.ARTICULOSCENTROS where articodi > 800011;
+SELECT * FROM cpr05.ARTICULOSEVENTOS WHERE ARTICODI = 800011;
+select * from EAD.TRAD_TRADUCCIONES where TABLPK = 800011;
+select * from cpr05.articulos_reg_mod where ARTICODI = 800011;
+select * from cpr05.articulos_reg_mod where articodi > 800011;
+
+select * from fyb.fb_fichas where nombre like '%SUB REC MIEL DE GUINDILLA';
