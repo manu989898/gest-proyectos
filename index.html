@@ -361,3 +361,32 @@ select * from cpr05.articulos_reg_mod where ARTICODI = 800011;
 select * from cpr05.articulos_reg_mod where articodi > 800011;
 
 select * from fyb.fb_fichas where nombre like '%SUB REC MIEL DE GUINDILLA';
+
+stoElaboradosLin encontrar la tabla donde se muestran ARTIOCULOS ASIGNADOS.
+
+
+
+main pruebas descargos
+
+en procedure DESCARGOS_CARGAR_DET añadido campo NVL(F.TIPOFICHA_ID, 0) AS TIPOFICHA_ID para traer el tipo de Ficha
+
+creado procedure GUARDAR_FICHA_ARTICULO y GET_UNIDADES_CNV en descargos
+creada columna tipoficha_id en la tablade unidades de conversión 
+
+
+
+añadido campo { name: "TIPOFICHA_ID", type: "int" }, al modelo DescargosLineas
+
+
+
+stoElaboradosLin
+loadGuardaLineasDescargo: function (data) {}
+  itemId: "elaboradosLinGrid",
+  onclickContextMenuEliminar comprbar con Angel
+
+  reloadAfterMapped()
+  headerFormConfig
+  loadGuardaLineasDescargo
+
+  private void GuardarDetalleArticulo devazure repo cpr05
+
